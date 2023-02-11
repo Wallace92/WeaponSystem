@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
-using WeaponSystemInheritance;
 
-[CustomEditor(typeof(WeaponInspector), true)]
-public class WeaponInspectorEditor : Editor 
+[CustomEditor(typeof(WeaponType), true)]
+public class WeaponTypeEditor : Editor 
 {
     public override void OnInspectorGUI() 
     {
         base.OnInspectorGUI();
-        var script = (WeaponInspector)target;
+        var script = (WeaponType)target;
+        
+        if (script.AvailableWeapons == null)
+            return;
 
         if (script.AvailableWeapons.Count == 0) 
             return;

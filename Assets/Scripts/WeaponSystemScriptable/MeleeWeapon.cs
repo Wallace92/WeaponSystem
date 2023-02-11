@@ -19,7 +19,7 @@ namespace WeaponSystemScriptable
     
         public override void Use()
         {
-            Debug.Log($"WhiteWeapon dealDamage {m_weapon.Damage} by {m_weapon.Name} with speed {Speed}");
+            Debug.Log($"{m_weapon.Name} dealDamage {m_weapon.Damage} with speed {Speed}");
         }
     }
 }

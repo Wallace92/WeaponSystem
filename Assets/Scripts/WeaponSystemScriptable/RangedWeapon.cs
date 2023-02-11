@@ -6,7 +6,7 @@ namespace WeaponSystemScriptable
     public class RangedWeapon : Damageable
     {
         [SerializeField] 
-        private RangedWeaponScriptableObject m_weaponScriptableObject;
+        private RangedWeaponScriptableObject m_weapon;
     
         [SerializeField]
         private int m_ammunition;
@@ -19,7 +19,7 @@ namespace WeaponSystemScriptable
 
         public override void Use()
         {
-            Debug.Log($"Ranged Weapon dealDamage {m_weaponScriptableObject.Damage} by {m_weaponScriptableObject.Name} with ammo {Ammunition}");
+            Debug.Log($"{m_weapon.Name} dealDamage {m_weapon.Damage} with ammo {Ammunition}");
         }
     }
 }
