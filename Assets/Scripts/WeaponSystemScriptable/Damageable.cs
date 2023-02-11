@@ -1,11 +1,6 @@
 ﻿using UnityEngine;
 
-namespace WeaponSystemScriptable
+public abstract class Damageable : MonoBehaviour
 {
-    
-    
-    public abstract class Damageable : MonoBehaviour
-    {
-        public abstract void Use();
-    }
+    public abstract void Use();
 }

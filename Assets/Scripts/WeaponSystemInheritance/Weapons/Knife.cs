@@ -1,20 +1,16 @@
 ﻿using System;
+using UnityEngine;
 
-namespace WeaponSystemInheritance.Weapons
+[Serializable]
+public class Knife : WhiteWeapon
 {
-    [Serializable]
-    public class Knife : WhiteWeapon
+    public int SpeedModifier = 10;
+
+    public Knife()
     {
-        public int SpeedModifier = 10;
-    
-        public Knife()
-        {
-            Name = "Knife";
-            Damage = 10;
-        }
-        public string DealDamage()
-        {
-            return $"Knife speed * {SpeedModifier}";
-        }
+        Name = "Knife";
+        Damage = 10;
     }
+    public override void Use() => 
+        Debug.Log($"{Name}, dealt {Damage}, speed {SpeedModifier * Speed}");
 }

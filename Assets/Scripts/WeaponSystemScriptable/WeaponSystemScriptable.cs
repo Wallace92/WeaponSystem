@@ -1,7 +1,5 @@
-﻿namespace WeaponSystemScriptable
+﻿
+public class WeaponSystemScriptable : WeaponSystemBase<Damageable>
 {
-    public class WeaponSystemScriptable : WeaponSystemBase<Damageable>
-    {
-        protected override void Attack() => m_selectedWeapon.Use();
-    }
+    protected override void Attack() => m_selectedWeapon.Use();
 }

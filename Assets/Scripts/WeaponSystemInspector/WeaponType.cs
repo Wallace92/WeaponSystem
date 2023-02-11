@@ -12,10 +12,7 @@ public abstract class WeaponType : MonoBehaviour
     public Weapon SelectedWeapon;
 
     public abstract void Use();
-    private void Awake()
-    {
-        m_weaponRotator = new WeaponRotator();
-    }
+    private void Awake() => m_weaponRotator = new WeaponRotator();
 
     private void Update()
     {

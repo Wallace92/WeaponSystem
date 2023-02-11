@@ -18,7 +18,11 @@ public class WeaponTypeEditor : Editor
         if (weaponType.AvailableWeapons.Count == 0) 
             return;
         
-        m_selectedWeaponIndex = EditorGUILayout.Popup("Weapon", m_selectedWeaponIndex, GetWeaponNames(weaponType.AvailableWeapons));
+        m_selectedWeaponIndex = EditorGUILayout.Popup(
+            "Weapon", 
+            m_selectedWeaponIndex,
+            GetWeaponNames(weaponType.AvailableWeapons));
+        
         weaponType.SelectedWeapon = weaponType.AvailableWeapons[m_selectedWeaponIndex];
     }
 

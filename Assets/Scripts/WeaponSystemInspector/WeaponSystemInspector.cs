@@ -1,32 +1,8 @@
-﻿using System.Linq;
-using UnityEngine;
-
-namespace WeaponSystemInspector
+﻿
+public class WeaponSystemInspector :  WeaponSystemSelector<WeaponType> 
 {
-    public class WeaponSystemInspector : MonoBehaviour 
-    {
-        [SerializeField]
-        private WeaponType m_selectedWeaponType;
+    public new void Update() => base.Update();
 
-        [SerializeField]
-        private WeaponSelector<WeaponType> m_weaponSelector;
-        
-        private void Awake()
-        {
-            m_weaponSelector = new WeaponSelector<WeaponType>(GetComponentsInChildren<WeaponType>().ToList());
-            
-            m_selectedWeaponType = m_weaponSelector.First();
-        }
+    protected override void Attack() => m_selectedWeapon.Use();
 
-        public void Update()
-        {
-            if (Input.GetMouseButtonDown(0))
-                Attack();
-
-            if (Input.GetMouseButtonDown(1))
-                m_selectedWeaponType = m_weaponSelector.Next();
-        }
-
-        private void Attack() => m_selectedWeaponType.Use();
-    }
 }

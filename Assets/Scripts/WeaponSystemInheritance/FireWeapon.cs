@@ -1,22 +1,18 @@
 ﻿using UnityEngine;
 
-namespace WeaponSystemInheritance
+public class FireWeapon : Weapon
 {
-    public class FireWeapon : Weapon
+    [SerializeField]
+    private int m_ammunition;
+
+    public int Ammunition
     {
-        [SerializeField]
-        private int m_ammunition;
-
-        public int Ammunition
-        {
-            get => m_ammunition;
-            set => m_ammunition = value;
-        }
-
-        public override void Use()
-        {
-            Debug.Log($"Ranged Weapon dealDamage {Damage} by {Name} with ammo {m_ammunition}");
-        }
+        get => m_ammunition;
+        set => m_ammunition = value;
     }
+
+    public override void Use() => 
+        Debug.Log($"Ranged weapon {Name} deal {Damage} Damage, ammo {Ammunition}");
 }
+
 

@@ -1,7 +1,5 @@
-﻿namespace WeaponSystemInheritance
+﻿
+public class WeaponSystemInheritance : WeaponSystemBase<Weapon>
 {
-    public class WeaponSystemInheritance : WeaponSystemBase<Weapon>
-    {
-        protected override void Attack() => m_selectedWeapon.Use();
-    }
+    protected override void Attack() => m_selectedWeapon.Use();
 }

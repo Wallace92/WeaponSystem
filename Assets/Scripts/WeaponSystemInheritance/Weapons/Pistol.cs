@@ -1,12 +1,10 @@
-﻿namespace WeaponSystemInheritance.Weapons
+﻿
+public class Pistol : FireWeapon
 {
-    public class Pistol : FireWeapon
+    public Pistol()
     {
-        public Pistol()
-        {
-            Name = "Pistol";
-            Damage = 15;
-            Ammunition = 7;
-        }
+        Name = "Pistol";
+        Damage = 15;
+        Ammunition = 7;
     }
 }
