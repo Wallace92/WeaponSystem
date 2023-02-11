@@ -15,7 +15,7 @@ namespace WeaponSystemInheritance
 
         public override void Use()
         {
-            Debug.Log($"WhiteWeapon dealDamage {Damage} by {Name} with ammo {m_ammunition}");
+            Debug.Log($"Ranged Weapon dealDamage {Damage} by {Name} with ammo {m_ammunition}");
         }
     }
 }

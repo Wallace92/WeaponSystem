@@ -9,7 +9,7 @@ namespace WeaponSystemInheritance
         int Damage { get; set; }
         void Use();
     }
-
+    
     public abstract class Weapon : MonoBehaviour, IWeapon
     {
         [SerializeField]

@@ -19,7 +19,7 @@ namespace WeaponSystemScriptable
 
         public void Use()
         {
-            Debug.Log($"WhiteWeapon dealDamage {m_weaponScriptableObject.Damage} by {m_weaponScriptableObject.Name} with ammo {m_ammunition}");
+            Debug.Log($"Ranged Weapon dealDamage {m_weaponScriptableObject.Damage} by {m_weaponScriptableObject.Name} with ammo {m_ammunition}");
         }
     }
 }
