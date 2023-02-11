@@ -5,22 +5,22 @@ using UnityEngine;
 using WeaponSystemInheritance;
 
 [Serializable]
-public class WeaponSelector
+public class WeaponSelector<T>
 {
     [SerializeField]
-    private List<Weapon> Weapons;
+    private List<T> Weapons;
 
     private int m_currentWeaponIndex = 0;
 
-    public WeaponSelector(List<Weapon> weapons) => Weapons = weapons;
+    public WeaponSelector(List<T> weapons) => Weapons = weapons;
 
 
-    public Weapon Next()
+    public T Next()
     {
         m_currentWeaponIndex = (m_currentWeaponIndex + 1) % Weapons.Count;
        
         return Weapons[m_currentWeaponIndex];
     }
     
-    public Weapon First() => Weapons.First();
+    public T First() => Weapons.First();
 }

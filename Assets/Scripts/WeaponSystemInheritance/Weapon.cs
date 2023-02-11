@@ -1,16 +1,8 @@
 using UnityEngine;
-using WeaponSystemInspector;
 
 namespace WeaponSystemInheritance
 {
-    public interface IWeapon
-    {
-        string Name { get; set; }
-        int Damage { get; set; }
-        void Use();
-    }
-    
-    public abstract class Weapon : MonoBehaviour, IWeapon
+    public abstract class Weapon : MonoBehaviour
     {
         [SerializeField]
         private int m_damage;
@@ -32,8 +24,4 @@ namespace WeaponSystemInheritance
 
         public abstract void Use();
     }
-
-
-
-
 }

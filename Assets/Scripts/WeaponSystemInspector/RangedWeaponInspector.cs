@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using WeaponSystemScriptable;
 
-public class RangedWeaponInspector : WeaponInspector, IDamageable
+public class RangedWeaponInspector : WeaponInspector
 {
-    public void Use() => Debug.Log("RangedWeapon: " + SelectedWeapon.Name + " with damage " + SelectedWeapon.Damage);
+    public override void Use() => Debug.Log("RangedWeapon: " + SelectedWeapon.Name + " with damage " + SelectedWeapon.Damage);
 }

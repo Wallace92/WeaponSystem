@@ -2,7 +2,7 @@
 using UnityEngine;
 using WeaponSystemInheritance;
 
-public class WeaponInspector : MonoBehaviour
+public abstract class WeaponInspector : MonoBehaviour
 {
     public List<Weapon> AvailableWeapons = new List<Weapon>();
     
@@ -10,4 +10,6 @@ public class WeaponInspector : MonoBehaviour
     public int SelectedWeaponIndex;
 
     protected Weapon SelectedWeapon => AvailableWeapons[SelectedWeaponIndex];
+
+    public abstract void Use();
 }

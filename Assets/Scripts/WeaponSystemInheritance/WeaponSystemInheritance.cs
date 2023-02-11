@@ -12,12 +12,12 @@ namespace WeaponSystemInheritance
         private WeaponRotator m_weaponRotator;
         
         [SerializeField]
-        private WeaponSelector m_weaponSelector;
+        private WeaponSelector<Weapon> m_weaponSelector;
         
         private void Awake()
         {
             m_weaponRotator = new WeaponRotator();
-            m_weaponSelector = new WeaponSelector(GetComponentsInChildren<Weapon>().ToList());
+            m_weaponSelector = new WeaponSelector<Weapon>(GetComponentsInChildren<Weapon>().ToList());
             
             m_selectedWeapon = m_weaponSelector.First();
         }
@@ -30,7 +30,7 @@ namespace WeaponSystemInheritance
             if (Input.GetMouseButtonDown(1))
                 m_selectedWeapon = m_weaponSelector.Next();
 
-            m_weaponRotator.RotateObject(m_selectedWeapon);
+            m_weaponRotator.RotateObject(m_selectedWeapon.gameObject);
         }
 
         private void Attack() => m_selectedWeapon.Use();

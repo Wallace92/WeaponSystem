@@ -1,6 +1,5 @@
 ﻿using System;
 using UnityEngine;
-using WeaponSystemInheritance;
 
 [Serializable]
 public class WeaponRotator
@@ -9,11 +8,11 @@ public class WeaponRotator
     private Vector3 m_rotationSpeed = new Vector3(0, 45, 0);
     
     
-    public void RotateObject(Weapon weapon)
+    public void RotateObject(GameObject weapon)
     {
         if (weapon == null)
             return;
-            
+        
         weapon.transform.localRotation *= Quaternion.Euler(m_rotationSpeed * Time.deltaTime);
     }
 }

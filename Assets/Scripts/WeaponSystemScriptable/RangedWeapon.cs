@@ -3,7 +3,7 @@ using WeaponSystemScriptable.ScriptableObjects;
 
 namespace WeaponSystemScriptable
 {
-    public class RangedWeapon : MonoBehaviour,  IDamageable
+    public class RangedWeapon : Damageable
     {
         [SerializeField] 
         private RangedWeaponScriptableObject m_weaponScriptableObject;
@@ -17,9 +17,9 @@ namespace WeaponSystemScriptable
             set => m_ammunition = value;
         }
 
-        public void Use()
+        public override void Use()
         {
-            Debug.Log($"Ranged Weapon dealDamage {m_weaponScriptableObject.Damage} by {m_weaponScriptableObject.Name} with ammo {m_ammunition}");
+            Debug.Log($"Ranged Weapon dealDamage {m_weaponScriptableObject.Damage} by {m_weaponScriptableObject.Name} with ammo {Ammunition}");
         }
     }
 }

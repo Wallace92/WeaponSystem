@@ -3,7 +3,7 @@ using WeaponSystemScriptable.ScriptableObjects;
 
 namespace WeaponSystemScriptable
 {
-    public class MeleeWeapon : MonoBehaviour, IDamageable
+    public class MeleeWeapon : Damageable
     {
         [SerializeField] 
         private MeleeWeaponScriptableObject m_weapon;
@@ -17,7 +17,7 @@ namespace WeaponSystemScriptable
             set => m_speed = value;
         }
     
-        public void Use()
+        public override void Use()
         {
             Debug.Log($"WhiteWeapon dealDamage {m_weapon.Damage} by {m_weapon.Name} with speed {Speed}");
         }

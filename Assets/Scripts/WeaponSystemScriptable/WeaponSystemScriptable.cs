@@ -6,10 +6,10 @@ namespace WeaponSystemScriptable
 {
     public class WeaponSystemScriptable : MonoBehaviour
     {
-        private List<IDamageable> Weapons;
+        private List<Damageable> Weapons;
     
         private int currentWeaponIndex = 0;
-        private void Awake() => Weapons = GetComponentsInChildren<IDamageable>().ToList();
+        private void Awake() => Weapons = GetComponentsInChildren<Damageable>().ToList();
 
         public void Attack() => Weapons[currentWeaponIndex].Use();
 

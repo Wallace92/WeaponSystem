@@ -1,31 +1,39 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using WeaponSystemScriptable;
 
 namespace WeaponSystemInspector
 {
     public class WeaponSystemInspector : MonoBehaviour 
     {
         [SerializeField]
-        public List<IDamageable> Weapons;
-    
-        private int currentWeaponIndex = 0;
-        private void Awake() => Weapons = GetComponentsInChildren<IDamageable>().ToList();
-
-        public void Attack() => Weapons[currentWeaponIndex].Use();
+        private WeaponInspector m_selectedWeapon;
+        
+        [SerializeField]
+        private WeaponRotator m_weaponRotator;
+        
+        [SerializeField]
+        private WeaponSelector<WeaponInspector> m_weaponSelector;
+        
+        private void Awake()
+        {
+            m_weaponRotator = new WeaponRotator();
+            m_weaponSelector = new WeaponSelector<WeaponInspector>(GetComponentsInChildren<WeaponInspector>().ToList());
+            
+            m_selectedWeapon = m_weaponSelector.First();
+        }
 
         public void Update()
         {
             if (Input.GetMouseButtonDown(0))
-            {
                 Attack();
-            }
 
             if (Input.GetMouseButtonDown(1))
-            {
-                currentWeaponIndex = (currentWeaponIndex + 1) % Weapons.Count;
-            }
+                m_selectedWeapon = m_weaponSelector.Next();
+
+            m_weaponRotator.RotateObject(m_selectedWeapon.gameObject);
         }
+
+        private void Attack() => m_selectedWeapon.Use();
     }
 }

@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
-using WeaponSystemScriptable;
 
-public class MeleeWeaponInspector :  WeaponInspector, IDamageable
+public class MeleeWeaponInspector :  WeaponInspector
 {
-    public void Use() => Debug.Log("Melee weapon: " + SelectedWeapon.Name + " with damage " + SelectedWeapon.Damage);
+    public override void Use() => Debug.Log("Melee weapon: " + SelectedWeapon.Name + " with damage " + SelectedWeapon.Damage);
 }
