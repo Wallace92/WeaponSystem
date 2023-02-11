@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using WeaponSystemInheritance;
 
 [Serializable]
 public class WeaponSelector<T>
 {
     [SerializeField]
     private List<T> Weapons;
-
+    
     private int m_currentWeaponIndex = 0;
-
+    
     public WeaponSelector(List<T> weapons) => Weapons = weapons;
-
 
     public T Next()
     {

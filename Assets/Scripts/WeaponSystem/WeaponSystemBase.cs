@@ -15,7 +15,7 @@ public abstract class WeaponSystemBase<T> : MonoBehaviour where T : MonoBehaviou
     {
         m_weaponRotator = new WeaponRotator();
         m_weaponSelector = new WeaponSelector<T>(GetComponentsInChildren<T>().ToList());
-        
+       
         m_selectedWeapon = m_weaponSelector.First();
     }
 

@@ -5,17 +5,23 @@ public abstract class WeaponType : MonoBehaviour
 {
     public List<Weapon> AvailableWeapons;
 
-    public int SelectedWeaponIndex { get;  set; }
-
     [SerializeField]
     private WeaponRotator m_weaponRotator;
-
-    protected Weapon SelectedWeapon => AvailableWeapons[SelectedWeaponIndex];
-
-    private void Awake() => m_weaponRotator = new WeaponRotator();
-
-    private void Update() => m_weaponRotator.RotateObject(SelectedWeapon.gameObject);
-
+    
+    [HideInInspector]
+    public Weapon SelectedWeapon;
 
     public abstract void Use();
+    private void Awake()
+    {
+        m_weaponRotator = new WeaponRotator();
+    }
+
+    private void Update()
+    {
+        if (SelectedWeapon == null)
+            return;
+        
+        m_weaponRotator.RotateObject(SelectedWeapon.gameObject);
+    }
 }
