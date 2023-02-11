@@ -1,8 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
 public abstract class WeaponSystemSelector<T> : MonoBehaviour
 {
+    protected Action OnSelectionChanged;
+    
     [SerializeField]
     protected T m_selectedWeapon;
     
@@ -22,7 +25,10 @@ public abstract class WeaponSystemSelector<T> : MonoBehaviour
             Attack();
 
         if (Input.GetMouseButtonDown(1))
+        {
             m_selectedWeapon = m_weaponSelector.Next();
+            OnSelectionChanged?.Invoke();
+        }
     }
     
     protected abstract void Attack();

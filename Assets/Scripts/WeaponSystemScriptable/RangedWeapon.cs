@@ -14,8 +14,6 @@ public class RangedWeapon : Damageable
         set => m_ammunition = value;
     }
 
-    public override void Use()
-    {
+    public override void Use() => 
         Debug.Log($"{m_weapon.Name} dealDamage {m_weapon.Damage} with ammo {Ammunition}");
-    }
 }

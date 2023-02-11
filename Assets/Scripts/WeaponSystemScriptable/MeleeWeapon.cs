@@ -14,8 +14,6 @@ public class MeleeWeapon : Damageable
         set => m_speed = value;
     }
 
-    public override void Use()
-    {
+    public override void Use() => 
         Debug.Log($"{m_weapon.Name} dealDamage {m_weapon.Damage} with speed {Speed}");
-    }
 }
