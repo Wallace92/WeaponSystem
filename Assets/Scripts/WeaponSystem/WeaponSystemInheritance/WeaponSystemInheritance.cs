@@ -1,5 +1,5 @@
 ﻿
-public class WeaponSystemInheritance : WeaponSystemBase<Weapon>
+public class WeaponSystemInheritance : WeaponSystem<Weapon>
 {
     protected override void Attack() => m_selectedWeapon.Use();
 }

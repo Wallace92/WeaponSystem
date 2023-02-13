@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class WeaponSystemBase<T> : WeaponSystemSelector<T> where T : MonoBehaviour
+public abstract class WeaponSystem<T> : WeaponSystemSelector<T> where T : MonoBehaviour
 {
     [SerializeField]
     private WeaponRotator m_weaponRotator;

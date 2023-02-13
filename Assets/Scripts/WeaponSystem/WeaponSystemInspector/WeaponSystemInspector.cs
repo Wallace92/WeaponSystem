@@ -5,6 +5,8 @@ public class WeaponSystemInspector :  WeaponSystemSelector<WeaponType>
     [SerializeField]
     private GameObject m_selectionMarker;
 
+    protected override void Attack() => m_selectedWeapon.Use();
+
     private new void Awake()
     {
         base.Awake();
@@ -12,11 +14,10 @@ public class WeaponSystemInspector :  WeaponSystemSelector<WeaponType>
         
         SetSelectionMarkerPosition();
     }
-    public new void Update() => base.Update();
+
+    private new void Update() => base.Update();
 
     private void SetSelectionMarkerPosition() => m_selectionMarker.transform.position = m_selectedWeapon.transform.position;
-
-    protected override void Attack() => m_selectedWeapon.Use();
 
     private void OnDestroy() => OnSelectionChanged -= SetSelectionMarkerPosition;
 }

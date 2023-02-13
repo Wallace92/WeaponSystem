@@ -1,0 +1,60 @@
+﻿@startuml
+
+
+WeaponType <|--  RangedWeaponType
+WeaponType <|--  MeleeWeaponType
+
+WeaponSystemSelector <|-- WeaponSystemInspector
+
+WeaponType *.. WeaponRotator  
+
+WeaponSystemSelector *.. WeaponSelector 
+
+abstract class WeaponSystemSelector<T> {
+# Action OnSelectionChanged
+# <T> m_selectedWeapon
+- WeaponSelector<T> m_weaponSelector
++ {method} void Update()
+# {abstract} void Attack()
+}
+
+class WeaponRotator {
+- Vector3 m_rotationSpeed
++ {method} RotateObject(GameObject)
+}
+
+class WeaponSelector<T> {
+-List<T>
+-int m_currentWeaponIndex
++ {method} <T> Next()
++ {method} <T> First()
+}
+
+
+class MeleeWeaponType {
++ void Use()
+}
+
+class RangedWeaponType {
++ void Use()
+}
+
+abstract class WeaponType {
++ List<Weapon> AvailableWeapons
++ Weapon SelectedWeapon
+- WeaponRotator m_weaponRotator
++ {abstract} void Use()
+- void Awake()
+- void Update()
+}
+
+class WeaponSystemInspector<WeaponType> {
+- GameObject m_selectionMarker
+# void Attack()
+- new void Awake()
+- new void Update()
+- void SetSelectionMarkerPosition()
+- void OnDestroy()
+}
+
+@enduml

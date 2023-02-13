@@ -1,0 +1,129 @@
+﻿@startuml
+
+WhiteWeapon <|-- Knife
+WhiteWeapon <|-- Mace
+
+FireWeapon  <|-- Pistol
+FireWeapon  <|--  Rifle
+
+Weapon <|-- FireWeapon
+Weapon <|-- WhiteWeapon
+
+
+WeaponSystemSelector <|-- WeaponSystem
+
+WeaponSystem  <|-- WeaponSystemInheritance
+
+WeaponScriptableObject <|-- MeleeWeaponScriptableObject
+WeaponScriptableObject <|-- RangedWeaponScriptableObject
+
+Damageable <|-- MeleeWeapon
+Damageable <|-- RangedWeapon
+
+WeaponSystem <|-- WeaponSystemScriptable
+
+WeaponSystem *.. WeaponRotator  
+
+WeaponSystemSelector *.. WeaponSelector 
+
+class WeaponSystemInheritance<T - Weapon>
+{
+#  {method} void Attack()
+}
+
+abstract class WeaponSystem<T> {
+- WeaponRotator m_weaponRotator
++ {method} void Awake()
++ {method} void Update()
+}
+
+abstract class WeaponSystemSelector<T>{
+# Action OnSelectionChanged
+# <T> m_selectedWeapon
+- WeaponSelector<T> m_weaponSelector
++ {method} void Update()
+# {abstract} void Attack()
+}
+
+class WeaponRotator{
+- Vector3 m_rotationSpeed
++ {method} RotateObject(GameObject)
+}
+
+class WeaponSelector<T> {
+-List<T>
+-int m_currentWeaponIndex
++ {method} <T> Next()
++ {method} <T> First()
+}
+
+
+abstract class Weapon {
+int Damage
+string Name
++ {abstract} void Use()
+}
+
+class FireWeapon {
+int Ammunition
++ {method} void Use()
+}
+
+class WhiteWeapon {
+int Speed
++ {method} void Use()
+}
+
+class Knife {
+int SpeedModifier
++ Knife()
++ {method} void Use()
+}
+
+class Mace {
+int DamageModifier
++ Mace()
++ {method} void Use()
+}
+
+class Pistol {
++ Pistol()
+}
+
+class Rifle {
++ Rifle()
+}
+
+
+class MeleeWeaponScriptableObject <<Weapons/MeleeWeaponData>> {
+}
+
+class RangedWeaponScriptableObject <<Weapons/RangedWeaponData>> {
+}
+
+abstract class WeaponScriptableObject {
++ string Name
++ int Damage
+}
+
+abstract class Damageable {
++ {abstract} void Use()
+}
+
+class MeleeWeapon {
+- MeleeWeaponScriptableObject m_weapon
++ int Speed
++ void Use()
+} 
+
+class RangedWeapon {
+- RangedWeaponScriptableObject m_weapon
++ int Ammunition
++ void Use()
+} 
+
+class WeaponSystemScriptable<T - Damagable> {
+#  {method} void Attack()
+}
+
+@enduml
